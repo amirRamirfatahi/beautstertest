@@ -1,0 +1,2 @@
+OTP_LENGTH = 6
+
