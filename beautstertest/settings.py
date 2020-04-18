@@ -102,6 +102,7 @@ REST_FRAMEWORK = {
     )
 }
 
+AUTH_USER_MODEL = 'auth.User'
 
 
 # Password validation
