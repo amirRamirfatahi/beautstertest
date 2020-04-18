@@ -104,6 +104,10 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'auth.User'
 
+# Celery
+
+CELERY_BROKER_URL = config('REDIS_URL', default='redis://localhost')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
