@@ -4,7 +4,7 @@ import random
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 
-from auth.constants import OTP_LENGTH
+from authenti.constants import OTP_LENGTH
 
 
 class User(AbstractBaseUser):
