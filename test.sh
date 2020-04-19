@@ -2,5 +2,5 @@
 
 export PHASE='test'
 cp "env.test" ".env"
-INPUT=$1
+INPUT="$@"
 python manage.py test $INPUT
