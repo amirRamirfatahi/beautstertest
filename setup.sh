@@ -6,6 +6,10 @@ source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv beautstertest
 workon beautstertest
 
+# setup permissions
+
+sudo chmod +x start.sh test.sh
+
 # setup database
 sudo -u postgres createuser beautster
 sudo -u postgres psql -c "ALTER USER beautster with PASSWORD 'beauster12345';"
