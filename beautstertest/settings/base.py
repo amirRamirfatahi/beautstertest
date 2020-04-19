@@ -102,7 +102,7 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = 'auth.User'
+AUTH_USER_MODEL = 'authenti.User'
 
 # Celery
 
