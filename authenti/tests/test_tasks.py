@@ -7,7 +7,7 @@ from authenti import tasks
 
 
 @mock.patch('django.core.mail.send_mail')
-class TestSendOtpMail(TestCase):
+class SendOtpEmailTest(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create(
