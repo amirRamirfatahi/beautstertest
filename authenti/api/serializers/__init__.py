@@ -1,1 +1,1 @@
-from .signup import SignupSerializer
+from .signup_serializer import SignupSerializer
