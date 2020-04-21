@@ -11,7 +11,7 @@ workon beautstertest
 sudo chmod +x start.sh test.sh
 
 # setup database
-sudo -u postgres createuser beautster
+sudo -u postgres createuser beautster -s
 sudo -u postgres psql -c "ALTER USER beautster with PASSWORD 'beauster12345';"
 sudo -u postgres createdb beautster --owner=beautster
 
