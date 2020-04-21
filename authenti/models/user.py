@@ -25,10 +25,12 @@ class User(AbstractBaseUser):
         return ''.join(random.choices(string.digits, k=OTP_LENGTH))
 
     def set_otp(self):
-        self.objects.filter(id=self.id).update(otp=self.generate_otp())
+        otp = self.generate_otp()
+        self.otp = otp
+        type(self).objects.filter(id=self.id).update(otp=otp)
 
     def clear_otp(self):
-        self.objects.filter(id=self.id).update(otp=None)
+        type(self).objects.filter(id=self.id).update(otp=None)
 
     def generate_token(self):
         return binascii.hexlify(os.urandom(20)).decode()
@@ -36,8 +38,9 @@ class User(AbstractBaseUser):
     def set_token(self):
         token = self.generate_token()
         cache.set(token, self.id)
-        self.objects.filter(id=self.id).update(token=token)
+        self.token = token
+        type(self).objects.filter(id=self.id).update(token=token)
 
     def clear_token(self):
         cache.delete(self.token)
-        self.objects.filter(id=self.id).update(token=None)
+        type(self).objects.filter(id=self.id).update(token=None)
