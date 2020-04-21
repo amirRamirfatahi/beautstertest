@@ -9,11 +9,18 @@ User = get_user_model()
 
 
 class SignupSerializerTest(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
         user1 = User.objects.create(
             username='user1',
             email='user1@dummymail.com'
         )
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        User.objects.all().delete()
 
     def get_signup_data(self, username, password, email):
         return {

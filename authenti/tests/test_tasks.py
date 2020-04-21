@@ -9,16 +9,23 @@ from authenti import tasks
 @mock.patch('django.core.mail.send_mail')
 class SendOtpEmailTest(TestCase):
 
-    def setUp(self):
-        self.user = get_user_model().objects.create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.user = get_user_model().objects.create(
             username='user1',
             email='user1@dummymail.com',
         )
-        self.otpuser = get_user_model().objects.create(
+        cls.otpuser = get_user_model().objects.create(
             username='user2',
             email='user2@dummymail.com',
             otp='123456'
         )
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        get_user_model().objects.all().delete()
 
     def test_sendotpmail_usernotexists_mailnotsent(self, send_mail_mock):
         tasks.send_otp_mail(3)
