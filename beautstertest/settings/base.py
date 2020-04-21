@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'authenti',
-    'salon'
+    'salon',
+    'booking'
 ]
 
 MIDDLEWARE = [
