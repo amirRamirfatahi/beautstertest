@@ -1,1 +1,1 @@
-from .salons_list_view import listsalon_view
+from .salon_views import listsalon_view, salon_view
