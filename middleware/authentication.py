@@ -5,7 +5,7 @@ from rest_framework.exceptions import AuthenticationFailed
 
 
 class CustomTokenAuth(TokenAuthentication):
-    def get_model():
+    def get_model(self):
         return get_user_model()
 
     def authenticate_credentials(self, key):
