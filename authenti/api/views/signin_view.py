@@ -18,8 +18,9 @@ class SigninView(BaseAPIView, TemplateView):
     template_name = 'signin.html'
 
     def post(self, request, *args, **kwargs):
-        redirect_url = request.data.pop('redirect_url', None)
-        serializer = self.get_serializer(data=request.data,
+        data = request.data.copy()
+        redirect_url = data.pop('redirect_url', None)
+        serializer = self.get_serializer(data=data,
                                          instance=self.get_object())
         serializer.is_valid(raise_exception=True)
         serializer.save()
