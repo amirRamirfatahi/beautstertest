@@ -17,8 +17,8 @@ class SalonListViewTest(APITestCase):
         cls.base_url = reverse('salon:salons')
         names = ['abcde', 'abcda', 'abcab', 'ababc']
         salons = []
-        for name in names:
-            salons.append(Salon(name=name))
+        for index, name in enumerate(names):
+            salons.append(Salon(name=name, id=index+1))
         Salon.objects.bulk_create(salons)
 
     @classmethod
