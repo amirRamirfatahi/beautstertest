@@ -3,18 +3,28 @@ import random
 import binascii
 import os
 
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, UserManager, \
+    PermissionsMixin
 from django.db import models
 from django.core.cache import cache
 
 from authenti.constants import OTP_LENGTH
 
 
-class User(AbstractBaseUser):
+class CustomUserManager(UserManager):
+    pass
+
+
+class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     otp = models.CharField(max_length=OTP_LENGTH, blank=True, null=True)
     token = models.CharField(max_length=40, unique=True, blank=True, null=True)
+
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
+    objects = CustomUserManager()
 
     USERNAME_FIELD = 'username'
 
