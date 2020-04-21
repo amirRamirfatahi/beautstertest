@@ -1,3 +1,5 @@
+from decouple import config
+
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
 

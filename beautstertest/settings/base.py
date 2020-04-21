@@ -64,7 +64,7 @@ ROOT_URLCONF = 'beautstertest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,6 +95,9 @@ DATABASES = {
 
 
 # Auth
+REST_DEFAULT_RENDERER_CLASSES = (
+        'rest_framework.renderers.JSONRenderer',
+)
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -105,6 +108,7 @@ REST_FRAMEWORK = {
             'rest_framework.authentication.SessionAuthentication',
     ),
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_RENDERER_CLASSES': REST_DEFAULT_RENDERER_CLASSES,
 }
 
 AUTH_USER_MODEL = 'authenti.User'
